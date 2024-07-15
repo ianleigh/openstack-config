@@ -5,5 +5,5 @@
 - import_playbook: openstack-flavors.yml
 - import_playbook: openstack-images.yml
 - import_playbook: openstack-host-aggregates.yml
-- import_playbook: openstack-container-clusters.yml
-- import_playbook: openstack-ratings.yml
+#- import_playbook: openstack-container-clusters.yml
+#- import_playbook: openstack-ratings.yml

@@ -248,14 +248,95 @@ openstack_security_groups:
 # List of nova flavors in the openstack project. Format is as required by the
 # stackhpc.os-flavors role.
 openstack_flavors:
+  - "{{ flavor_icelake_44 }}"
+  - "{{ flavor_icelake_22 }}"
+  - "{{ flavor_icelake_10 }}"
   - "{{ flavor_general_2 }}"
+  - "{{ flavor_general_4 }}"
+  - "{{ flavor_general_8 }}"
+  - "{{ flavor_general_16 }}"
 
 flavor_general_2:
-  name: general.2
-  flavorid: efc9552a-923c-4e7a-ae25-cc0978544520
-  ram: "{{ 2 * 1024 }}"
-  disk: 2
+  name: "general.2.16"
   vcpus: 2
+  ram: "{{ 16 * 1024 }}"
+  disk: 20
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_GENERAL": "required"
+
+flavor_general_4:
+  name: "general.4.32"
+  vcpus: 4
+  ram: "{{ 32 * 1024 }}"
+  disk: 20
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_GENERAL": "required"
+
+flavor_general_8:
+  name: "general.8.64"
+  vcpus: 8
+  ram: "{{ 64 * 1024 }}"
+  disk: 20
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_GENERAL": "required"
+
+flavor_general_16:
+  name: "general.16.128"
+  vcpus: 16
+  ram: "{{ 128 * 1024 }}"
+  disk: 100
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_GENERAL": "required"
+
+flavor_icelake_44:
+  name: "icelake.44.1408"
+  vcpus: 44
+  ram: "{{ 1408 * 1024 }}"
+  disk: 100
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_SR650": "required"
+    "hw:cpu_policy": "dedicated"
+    "hw:numa_nodes": 2
+    "hw:cpu_sockets": 2
+    "hw:cpu_threads": 2
+    "hw:cpu_thread_policy": "prefer"
+    "hw:mem_page_size": "1GB"
+
+flavor_icelake_22:
+  name: "icelake.22.1408"
+  vcpus: 22
+  ram: "{{ 660 * 1024 }}"
+  disk: 100
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_SR650": "required"
+    "hw:cpu_policy": "dedicated"
+    "hw:numa_nodes": 1
+    "hw:cpu_sockets": 1
+    "hw:cpu_threads": 2
+    "hw:cpu_thread_policy": "prefer"
+    "hw:mem_page_size": "1GB"
+
+flavor_icelake_10:
+  name: "icelake.10.300"
+  vcpus: 10
+  ram: "{{ 300 * 1024 }}"
+  disk: 100
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_SR650": "required"
+    "hw:cpu_policy": "dedicated"
+    "hw:numa_nodes": 1
+    "hw:cpu_sockets": 1
+    "hw:cpu_threads": 2
+    "hw:cpu_thread_policy": "prefer"
+    "hw:mem_page_size": "1GB"
+
 
 ###############################################################################
 # Configuration of nova host aggregates.

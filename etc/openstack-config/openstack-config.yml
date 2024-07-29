@@ -248,6 +248,7 @@ openstack_security_groups:
 # List of nova flavors in the openstack project. Format is as required by the
 # stackhpc.os-flavors role.
 openstack_flavors:
+  - "{{ flavor_saphire_124 }}"
   - "{{ flavor_icelake_44 }}"
   - "{{ flavor_icelake_22 }}"
   - "{{ flavor_icelake_10 }}"
@@ -291,6 +292,21 @@ flavor_general_16:
   ephemeral: 0
   extra_specs:
     "trait:CUSTOM_GENERAL": "required"
+
+flavor_saphire_124:
+  name: "saphire.124.1984"
+  vcpus: 124
+  ram: "{{ 1984 * 1024 }}"
+  disk: 100
+  ephemeral: 0
+  extra_specs:
+    "trait:CUSTOM_R660": "required"
+    "hw:cpu_policy": "dedicated"
+    "hw:numa_nodes": 2
+    "hw:cpu_sockets": 2
+    "hw:cpu_threads": 2
+    "hw:cpu_thread_policy": "prefer"
+    "hw:mem_page_size": "1GB"
 
 flavor_icelake_44:
   name: "icelake.44.1408"
